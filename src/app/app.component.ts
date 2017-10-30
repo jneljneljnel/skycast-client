@@ -40,26 +40,20 @@ local10:any=  JSON.parse(localStorage.getItem('local10'))||0;
 
 
   constructor(private http: Http ){
-    //console.log(this.searchHistory);
-      navigator.geolocation.getCurrentPosition(pos => {  
-        this.getWeather(this.lat, this.lng);  
-      },(error =>{
         this.getWeather(33.71,-118.15873);
-      }));     
   }
 
    getWeather(lat, lng) {
     this.getWeatherPost(lat, lng).subscribe(data => {
       this.data = data  
       this.currently = data.currently
-      this.week = data.daily.data
-      //console.log(this.data)    
+      this.week = data.daily.data  
     });
   }
 
   getWeatherPost(lat, lng){
   	const body = {lat:lat, lng:lng};
-    return this.http.post('Http://localhost:3000/weather', body)
+    return this.http.post('https://fast-cliffs-17077.herokuapp.com/weather', body)
       .map((res:Response)=>res.json())
   }
 
@@ -67,25 +61,19 @@ local10:any=  JSON.parse(localStorage.getItem('local10'))||0;
      this.mapClicked(0, lat, lng)
   }
 
-
   mapClicked($event: any, plat, plng) {
-    	//console.log($event.coords.lat, $event.coords.lng)
-    	//this.currently.temperature = '...'
     let lat:any = 0;
     let lng:any=0;
-    if($event){
+    if($event) {
        lat =  $event.coords.lat,
        lng = $event.coords.lng
     }
-    if(plat)
-     {
+    if(plat) {
        lat = plat
        lng = plng
-     } 
+    } 
 
-
-
-      this.getWeather(lat,lng)
+    this.getWeather(lat,lng)
 
     let newMarkers = [{
   	  lat: lat,
