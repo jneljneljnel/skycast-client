@@ -1,3 +1,63 @@
-<h1>
-  {{title}}
-</h1>
+<!-- <h1>{{ title }}</h1> -->
+
+<div class="main">
+	<h1>Current Temp: {{currently.temperature}}</h1>
+	<h1>{{currently.summary}}</h1>
+</div>
+<agm-map [latitude]="lat" [longitude]="lng"  (mapClick)="mapClicked($event)">
+  <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng" [markerDraggable]=true ></agm-marker>
+</agm-map>
+
+<div class="weekly">
+	<h2>Weekly Forecast</h2>	
+</div>
+
+<div class="parent">
+	<div  class='item' *ngFor="let d of week ">
+		<span>
+			<div>High</div>
+			<p>{{d.temperatureHigh}}</p>
+			</span>
+		<span>
+			<div>Low</div> 
+			<p>{{d.temperatureLow}}</p>
+		</span>
+	</div>
+</div>
+
+<app-chart [lat]="lat" [lng]="lng">chart</app-chart>
+
+<div class='recentSearches'>
+	<h2>recent searches:</h2>
+	<button class='recentSearchButton' *ngIf="local1" (click)='recentSearch(local1.lat, local1.lng)'>
+		<p>{{local1.lat}} {{local1.lng}}</p>	
+	</button>	
+	<button class='recentSearchButton' *ngIf="local2" (click)='recentSearch(local2.lat, local2.lng)'>
+		<p>{{local2.lat}} {{local2.lng}}</p>
+	</button>
+	<button class='recentSearchButton' *ngIf="local3" (click)='recentSearch(local3.lat, local3.lng)'>
+		<p>{{local3.lat}} {{local3.lng}}</p>
+	</button>
+	<button class='recentSearchButton' *ngIf="local4"(click)='recentSearch(local4.lat, local4.lng)'>
+		<p>{{local4.lat}} {{local4.lng}}</p>
+	</button>
+	<button class='recentSearchButton' *ngIf="local5" (click)='recentSearch(local5.lat, local5.lng)'>
+		<p>{{local5.lat}} {{local5.lng}}</p>
+	</button>
+	<button class='recentSearchButton' *ngIf="local6" (click)='recentSearch(local6.lat, local6.lng)'>
+		<p>{{local6.lat}} {{local6.lng}}</p>
+	</button>
+	<button class='recentSearchButton' *ngIf="local7" (click)='recentSearch(local7.lat, local7.lng)'>
+		<p>{{local7.lat}} {{local7.lng}}</p>
+	</button>
+	<button class='recentSearchButton' *ngIf="local8" (click)='recentSearch(local8.lat, local8.lng)'>
+   		<p>{{local8.lat}} {{local8.lng}}</p>
+   	</button>
+   	<button class='recentSearchButton' *ngIf="local9"(click)='recentSearch(local9.lat, local9.lng)'>
+		<p>{{local9.lat}} {{local9.lng}}</p>
+	</button>
+	<button class='recentSearchButton' *ngIf="local10" (click)='recentSearch(local10.lat, local10.lng)'>
+		<p>{{local10.lat}} {{local10.lng}}</p>
+	</button>
+	
+</div>

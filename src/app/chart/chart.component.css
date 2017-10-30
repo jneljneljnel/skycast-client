@@ -1,0 +1,11 @@
+.chartRow{
+	margin-left: 200px;
+	margin-right: 200px;
+	float: left;
+	max-height: 25%;
+	max-width: 25%;
+}
+
+.graph{
+	width:100%;
+}
